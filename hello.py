@@ -2,7 +2,7 @@
 На квадратном торте размером N×N расставлено M свечей. 
 Определить, можно ли одним прямолинейным разрезом разделить торт на две части, равные по площади, так, 
 чтобы все свечи оказались на одной половине. Свечи считаем точками. Разрез не может проходить через свечу. 
-in.txt - N x1 y1 x2 y2 ... xM yM
+in.txt - N x1 y1 x2 y2 ... xM yM.
 '''
 
 import copy  
@@ -11,9 +11,9 @@ def candles():
     file1 = open("in.txt", "r")
     line = file1.readline().strip()
     args = line.split(' ') # Список с входящими данными
+    N = int(args.pop(0))
     if len(args) % 2 != 0:
         return("Не хватает yM?")
-    N = int(args.pop(0))
     if N % 2 != 0:
         return("Введите чётное поле") 
     x1 = N / 2
@@ -38,7 +38,7 @@ def candles():
             x = int(args[k])
             y = int(args[k+1])
             if x1 == x and y1 == y:
-                return("Нет")
+                return("Нет, свеча в геометрическом центре")
             delta = (x - x1)/(x2 - x1) - (y - y1)/(y2 - y1)
             if delta > 0:
                 sign.add("+")
